@@ -4,7 +4,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32f0xx.h"
 //#include "stdio.h"
-//#include "setting.h"
+#include "setting.h"
 
 /* Define --------------------------------------------------------------------*/
 #define INFO

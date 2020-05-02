@@ -7,7 +7,7 @@
 
   <Targets>
     <Target>
-      <TargetName>Target 1</TargetName>
+      <TargetName>Svet_8_9_LM</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
       <pCCUsed>5060750::V5.06 update 6 (build 750)::ARMCC</pCCUsed>
@@ -406,6 +406,26 @@
               <FileName>main.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\SOURCE\src\main.c</FilePath>
+            </File>
+            <File>
+              <FileName>setting.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\SOURCE\src\setting.c</FilePath>
+            </File>
+            <File>
+              <FileName>light.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\SOURCE\src\light.c</FilePath>
+            </File>
+            <File>
+              <FileName>lightpwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\SOURCE\src\lightpwm.c</FilePath>
+            </File>
+            <File>
+              <FileName>rs485.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\SOURCE\src\rs485.c</FilePath>
             </File>
           </Files>
         </Group>

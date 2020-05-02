@@ -287,7 +287,7 @@ static void SetSysClock(void)
   
   /* SYSCLK, HCLK, PCLK configuration ----------------------------------------*/
   /* Enable HSE */    
-  RCC->CR |= ((uint32_t)RCC_CR_HSEON);
+  //RCC->CR |= ((uint32_t)RCC_CR_HSEON);
  
   /* Wait till HSE is ready and if Time out is reached exit */
   do
@@ -340,6 +340,30 @@ static void SetSysClock(void)
   else
   { /* If HSE fails to start-up, the application will have wrong clock 
          configuration. User can add here some code to deal with this error */
+    if ((RCC->CFGR & RCC_CFGR_SWS) == RCC_CFGR_SWS_PLL) /* (1) */
+    {
+      RCC->CFGR &= (uint32_t) (~RCC_CFGR_SW); /* (2) */
+      while ((RCC->CFGR & RCC_CFGR_SWS) != RCC_CFGR_SWS_HSI) /* (3) */
+      {
+      /* For robust implementation, add here time-out management */
+      }
+    }
+    RCC->CR &= (uint32_t)(~RCC_CR_PLLON);/* (4) */
+    while((RCC->CR & RCC_CR_PLLRDY) != 0) /* (5) */
+    {
+    /* For robust implementation, add here time-out management */
+    }
+    RCC->CFGR = RCC->CFGR & (~RCC_CFGR_PLLMUL) | (RCC_CFGR_PLLMULL12); /* (6) */
+    RCC->CR |= RCC_CR_PLLON; /* (7) */
+    while((RCC->CR & RCC_CR_PLLRDY) == 0) /* (8) */
+    {
+    /* For robust implementation, add here time-out management */
+    }
+    RCC->CFGR |= (uint32_t) (RCC_CFGR_SW_PLL); /* (9) */
+    while ((RCC->CFGR & RCC_CFGR_SWS) != RCC_CFGR_SWS_PLL) /* (10) */
+    {
+    /* For robust implementation, add here time-out management */
+    }
   }  
 }
 
