@@ -32,11 +32,12 @@ void Rs485Init(void){
   USART1->CR1 |= USART_CR1_TE | USART_CR1_RE;
   USART1->CR1 |= USART_CR1_RXNEIE;
 //  USART1->CR1 |= USART_CR1_IDLEIE;
-  USART1->CR1 |= USART_CR1_TCIE;
+//  USART1->CR1 |= USART_CR1_TCIE;
   USART1->CR1 |= USART_CR1_UE;
   
   NVIC_SetPriority(USART1_IRQn, 0x00);
   NVIC_EnableIRQ(USART1_IRQn);
+  Rs485Sends((uint8_t*)"Start");
 }
 
 void USART1_IRQHandler(void){

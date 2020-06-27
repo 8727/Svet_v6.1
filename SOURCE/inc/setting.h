@@ -31,7 +31,7 @@
 /* Define --------------------------------------------------------------------*/
 struct settingsInitTypeDef{
   //Timer
-  uint16_t counter;
+  uint8_t  counter;
   uint8_t  light_1;
   uint8_t  light_2;
   uint8_t  light_3;

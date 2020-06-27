@@ -4,7 +4,7 @@ struct pwmInitTypeDef pwm;
 
 void TIM3_IRQHandler(void){
   TIM3->SR &= ~TIM_SR_UIF;
-  if(GPIOF->IDR & GPIO_IDR_0){
+  if(!(GPIOF->IDR & GPIO_IDR_0)){
     settings.counter = 0x00;
     if(0x00 == pwm.step){
       pwm.step++;
@@ -39,7 +39,7 @@ void TIM3_IRQHandler(void){
     settings.counter++;
     pwm.step = 0x00;
   }
-  if(settings.counter > 0xFF){ settings.counter = 0xFF; }
+  if(settings.counter > 0xFE){ settings.counter = 0xFE; }
   
   if(0x00 < pwm.light_1){ if(settings.counter < pwm.light_1){ LIGHT_L1_ON; }else{ LIGHT_L1_OFF; }}else{ LIGHT_L1_OFF; }
   if(0x00 < pwm.light_2){ if(settings.counter < pwm.light_2){ LIGHT_L2_ON; }else{ LIGHT_L2_OFF; }}else{ LIGHT_L2_OFF; }
@@ -56,10 +56,10 @@ void lightPwmInit(void){
   RCC->APB1ENR |= RCC_APB1ENR_TIM3EN;
   if(LIGHT_0_100 == true){
     TIM3->PSC = 0x01DF; // 479 48000000:480=100000Hz
-    TIM3->ARR = 0x0009; // 100000Hz
+    TIM3->ARR = 0x0009; // 100000:10=10000Hz
   }else{
     TIM3->PSC = 0x0000; // 48000000Hz
-    TIM3->ARR = 0x0752; // 25600Hz
+    TIM3->ARR = 0x0752; // 25600Hz     752
   }
   TIM3->SR = 0x00;
   TIM3->DIER |= TIM_DIER_UIE;
