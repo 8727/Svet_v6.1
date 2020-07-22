@@ -21,8 +21,8 @@ struct pwmInitTypeDef{
 
 extern struct pwmInitTypeDef pwm;
 
-static const uint8_t power[]={0x00, 0x10, 0x20, 0x30, 0x40, 0x50, 0x10, 0x20, 0x30, 0x40, 0x50, 0x10, 0x20, 0x30, 0x40, 0x50};
-
+static const uint8_t power[]={0, 15, 24, 30, 35, 39, 44, 47, 51, 56, 60, 64, 69, 74, 82, 100};
+static const uint8_t power_92[]={0, 15, 23, 28, 32, 36, 40, 44, 47, 51, 55, 59, 63, 68, 76, 92};
 void lightPwmInit(void);
 void lightStepInit(void);
 
