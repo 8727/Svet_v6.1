@@ -44,17 +44,6 @@ void USART1_IRQHandler(void){
   if(USART1->ISR & USART_ISR_RXNE){
     USART1->ISR &= ~USART_ISR_RXNE;
     rs485.rxBuff[rs485.rxStop++] = USART1->TDR;
-    if((rs485.rxStart + 0x09) == rs485.rxStop){
-      settings.light_1 = rs485.rxBuff[rs485.rxStart++];
-      settings.light_2 = rs485.rxBuff[rs485.rxStart++];
-      settings.light_3 = rs485.rxBuff[rs485.rxStart++];
-      settings.light_4 = rs485.rxBuff[rs485.rxStart++];
-      settings.light_c = rs485.rxBuff[rs485.rxStart++];
-      settings.light_w = rs485.rxBuff[rs485.rxStart++];
-      settings.light_r = rs485.rxBuff[rs485.rxStart++];
-      settings.light_g = rs485.rxBuff[rs485.rxStart++];
-      settings.light_b = rs485.rxBuff[rs485.rxStart++];
-    }
   }
   if(USART1->ISR & USART_ISR_TXE){
     if (rs485.txStart != rs485.txStop){

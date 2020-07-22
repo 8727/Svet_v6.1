@@ -31,24 +31,23 @@
 /* Define --------------------------------------------------------------------*/
 struct settingsInitTypeDef{
   //Timer
-  uint8_t  counter;
-  uint8_t  light_1;
-  uint8_t  light_2;
-  uint8_t  light_3;
-  uint8_t  light_4;
-  uint8_t  light_r;
-  uint8_t  light_g;
-  uint8_t  light_b;
-  uint8_t  light_c;
-  uint8_t  light_w;
-  uint16_t max;
+  uint8_t counter;
+  uint8_t light_1;
+  uint8_t light_2;
+  uint8_t light_3;
+  uint8_t light_4;
+  uint8_t light_r;
+  uint8_t light_g;
+  uint8_t light_b;
+  uint8_t light_c;
+  uint8_t light_w;
+  uint8_t max;
 };
 
 extern struct settingsInitTypeDef settings;
 
 uint32_t GetTick(void);
 void DelayMs(uint32_t ms);
-void DelayMc(uint32_t mc);
 
 void Setting(void);
 

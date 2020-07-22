@@ -19,6 +19,7 @@ struct Rs485InitTypeDef{
   uint16_t rxStop;
   uint8_t txStart;
   uint8_t txStop;
+  uint8_t buff;
 };
 
 extern struct Rs485InitTypeDef rs485;
