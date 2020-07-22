@@ -35,7 +35,4 @@ void lightInit(void){
   }
     GPIOF->MODER &= ~GPIO_MODER_MODER0;
     GPIOF->PUPDR &= ~GPIO_PUPDR_PUPDR0;
-
-
-
 }

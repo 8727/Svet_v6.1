@@ -41,6 +41,7 @@ struct settingsInitTypeDef{
   uint8_t  light_b;
   uint8_t  light_c;
   uint8_t  light_w;
+  uint16_t max;
 };
 
 extern struct settingsInitTypeDef settings;

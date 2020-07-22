@@ -30,5 +30,6 @@ void Setting(void){
   
   lightInit();
   lightPwmInit();
+  lightStepInit();
   Rs485Init();
 }
