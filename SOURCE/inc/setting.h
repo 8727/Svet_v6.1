@@ -14,6 +14,7 @@
 #define SW_BUILD                          "1.00"      // "1.00" 0x312E3033
 
 /* Define --------------------------------------------------------------------*/
+#define POWER_M 0x00
 #define LIGHT_9                           true
 #define LIGHT_0_100                       true
 #define RS485_SPEED                       0x1388      //0x0034       //921600
