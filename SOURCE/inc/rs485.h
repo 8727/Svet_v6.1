@@ -15,8 +15,8 @@
 struct Rs485InitTypeDef{
   uint8_t rxBuff[SIZE_BUFF_RS485];
   uint8_t txBuff[SIZE_BUFF_RS485];
-  uint16_t rxStart;
-  uint16_t rxStop;
+  uint8_t rxStart;
+  uint8_t rxStop;
   uint8_t txStart;
   uint8_t txStop;
   uint8_t buff;
