@@ -37,17 +37,17 @@ void Rs485Init(void){
   
   NVIC_SetPriority(USART1_IRQn, 0x00);
   NVIC_EnableIRQ(USART1_IRQn);
-  Rs485Sends((uint8_t*)"Start");
+//  Rs485Sends((uint8_t*)"Start");
 }
 
 void USART1_IRQHandler(void){
   if(USART1->ISR & USART_ISR_RXNE){
     USART1->ISR &= ~USART_ISR_RXNE;
-    rs485.rxBuff[rs485.rxStop++] = USART1->TDR;
+    rs485.rxBuff[rs485.rxStop++] = USART1->RDR;
   }
   if(USART1->ISR & USART_ISR_TXE){
     if (rs485.txStart != rs485.txStop){
-      USART1->RDR = rs485.txBuff[rs485.txStart++];
+      USART1->TDR = rs485.txBuff[rs485.txStart++];
     }else{
       USART1->CR1 &= ~USART_CR1_TXEIE;
     }
